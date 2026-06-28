@@ -75,18 +75,40 @@ export default function About() {
         }}
       />
 
-      {/* ── PERFECTLY VISIBLE BACKLIT NEON WATERMARK ── */}
+      {/* ── PERFECTLY VISIBLE BACKLIT NEON WATERMARK WITH BACKGROUND ANIMATION ── */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
         
-        {/* Outer Aura Expansion Light - ওয়াটারমার্কের ঠিক পেছনের ছড়ানো গ্লো */}
-        <div className="absolute w-[90%] h-[45%] bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.16)_0%,rgba(168,85,247,0.08)_50%,transparent_75%)] blur-3xl animate-pulse duration-[4000ms]" />
+        {/* Animated Background Aura - ওয়াটারমার্কের চারপাশের গ্লোয়িং লাইট এখন মৃদুভাবে মুভ করবে ও পালস হবে */}
+        <motion.div 
+          animate={{
+            scale: [1, 1.08, 1],
+            opacity: [0.12, 0.18, 0.12],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute w-[90%] h-[45%] bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.18)_0%,rgba(168,85,247,0.08)_50%,transparent_75%)] blur-3xl" 
+        />
         
-        {/* Core High-Intensity Light Spot - অক্ষরের চারপাশে উজ্জ্বল ফোকাস লাইট */}
-        <div className="absolute w-[600px] h-[220px] rounded-full bg-gradient-to-r from-cyan-500/[0.08] to-purple-500/[0.08] blur-[90px]" />
+        {/* Dynamic Inner Light Core */}
+        <motion.div 
+          animate={{
+            x: [-10, 10, -10],
+            y: [-5, 5, -5],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute w-[600px] h-[220px] rounded-full bg-gradient-to-r from-cyan-500/[0.09] to-purple-500/[0.09] blur-[90px]" 
+        />
 
         <motion.h1
           animate={{
-            opacity: [1, 0.85, 1],
+            opacity: [1, 0.88, 1],
             scale: [1, 1.005, 1]
           }}
           transition={{
@@ -94,7 +116,7 @@ export default function About() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="text-[14vw] font-black tracking-[0.16em] uppercase font-sans text-center bg-gradient-to-b from-slate-200/[0.22] via-slate-400/[0.12] to-transparent bg-clip-text text-transparent whitespace-nowrap drop-shadow-[0_0_40px_rgba(34,211,238,0.22)]"
+          className="text-[14vw] font-black tracking-[0.16em] uppercase font-sans text-center bg-gradient-to-b from-slate-200/[0.22] via-slate-400/[0.12] to-transparent bg-clip-text text-transparent whitespace-nowrap drop-shadow-[0_0_40px_rgba(34,211,238,0.25)]"
         >
           ABOUT
         </motion.h1>
@@ -171,14 +193,16 @@ export default function About() {
                   transition={{ duration: 0.5, delay: index * 0.12 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -4, scale: 1.01 }}
-                  className="group relative overflow-hidden rounded-2xl border border-white/[0.04] bg-[#070b19]/60 backdrop-blur-xl p-5 transition-all duration-300 shadow-xl"
+                  
+                  // কার্ড এরিয়াগুলোতে ভিজিবল হালকা লাইট বর্ডার সেট করা হয়েছে
+                  className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#070b19]/40 backdrop-blur-xl p-5 transition-all duration-300 shadow-xl"
                 >
                   {/* Dynamic Glowing Hover Border Framework */}
                   <div
                     className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none"
                     style={{
-                      border: `1px solid ${service.color}35`,
-                      boxShadow: `inset 0 0 15px ${service.color}05`,
+                      border: `1px solid ${service.color}45`,
+                      boxShadow: `inset 0 0 15px ${service.color}10`,
                     }}
                   />
 
@@ -207,8 +231,8 @@ export default function About() {
                       className="w-14 h-14 rounded-xl flex items-center justify-center bg-slate-950/90 border flex-shrink-0"
                       style={{
                         background: `linear-gradient(135deg, ${service.color}15, transparent)`,
-                        borderColor: `${service.color}25`,
-                        boxShadow: `0 0 20px ${service.color}10`,
+                        borderColor: `${service.color}35`,
+                        boxShadow: `0 0 20px ${service.color}15`,
                       }}
                     >
                       <Icon size={22} color={service.color} />
