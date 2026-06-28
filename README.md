@@ -56,29 +56,14 @@ A modern and responsive developer portfolio built with **React**, **Tailwind CSS
 * Projects
 * Contact
 
----
 
-## 🚀 Getting Started
-
-Clone the repository
-
-```bash
-git clone https://github.com/your-username/your-portfolio.git
-```
-
-Navigate to the project
-
-```bash
-cd your-portfolio
-```
-
-Install dependencies
+# Install dependencies
 
 ```bash
 npm install
 ```
 
-Start the development server
+# Start the development server
 
 ```bash
 npm run dev
